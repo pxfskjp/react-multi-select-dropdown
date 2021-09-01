@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Multiselect } from "multiselect-react-dropdown";
-import axios from 'axios';
+import data from '../data';
+// import axios from 'axios';
 
-const url = 'http://localhost:3001/'
+// const url = 'http://localhost:3001/'
 
 export default function SelectBoxComponent(props) {
   
@@ -19,24 +20,27 @@ export default function SelectBoxComponent(props) {
 	useEffect(() => {
 
     // Get Categories
-    axios.get(`${url}api/v1/categories`)
-      .then((res) => {
-        setCategoryArray(res.data);
-      })
+    // axios.get(`${url}api/v1/categories`)
+    //   .then((res) => {
+    //     setCategoryArray(res.data);
+    //   })
     
-    // Get Subjects
-    axios.get(`${url}api/v1/subjects`)
-    .then((res) => {
-      setAllSubjectsArray(res.data);
-    })
+    // // Get Subjects
+    // axios.get(`${url}api/v1/subjects`)
+    // .then((res) => {
+    //   setAllSubjectsArray(res.data);
+    // })
 
-    // Get Tags
-    axios.get(`${url}api/v1/tags`)
-      .then((res) => {
-        setAllTagsArray(res.data);
-      })
+    // // Get Tags
+    // axios.get(`${url}api/v1/tags`)
+    //   .then((res) => {
+    //     setAllTagsArray(res.data);
+    //   })
+    setCategoryArray(data.categories);
+    setAllSubjectsArray(data.subjects);
+    setAllTagsArray(data.tags);
 
-	}, [categoryArray])
+	}, [selectedCategories])
 
   const onSelect = (selectedList, selectedItem) => {
     setSelectedCategories(selectedList);
@@ -86,7 +90,7 @@ export default function SelectBoxComponent(props) {
           <Multiselect 
             id="category_select"
             options={categoryArray}
-            selectionLimit={5}
+            selectionLimit={1}
             onSelect={(selectedList, selectedIte) => onSelect(selectedList, selectedIte)}
             onRemove={(selectedList, removedItem) => onRemove(selectedList, removedItem)}
             displayValue="category"
