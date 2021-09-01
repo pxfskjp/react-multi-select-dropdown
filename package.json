@@ -1,0 +1,29 @@
+{
+  "name": "multiselect-react-dropdown",
+  "version": "1.0.0",
+  "description": "A React component providing multiselect functionality with various features like selection limit, CSS customization, checkbox, search option, disable preselected values, flat array options, keyboard navigation and grouping features.\n",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "bootstrap": "4.3.1",
+    "multiselect-react-dropdown": "1.7.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-scripts": "2.1.8"
+  },
+  "devDependencies": {
+    "typescript": "3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
