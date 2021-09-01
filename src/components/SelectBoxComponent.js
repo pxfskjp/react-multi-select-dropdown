@@ -40,7 +40,7 @@ export default function SelectBoxComponent(props) {
     setAllSubjectsArray(data.subjects);
     setAllTagsArray(data.tags);
 
-	}, [selectedCategories])
+	}, [selectedCategories, selectedTags, selectedSubjects])
 
   const onSelect = (selectedList, selectedItem) => {
     setSelectedCategories(selectedList);
