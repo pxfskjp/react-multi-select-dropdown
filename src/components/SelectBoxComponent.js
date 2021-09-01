@@ -44,6 +44,7 @@ export default function SelectBoxComponent(props) {
 
   const onSelect = (selectedList, selectedItem) => {
     setSelectedCategories(selectedList);
+    setSubjectBySelectedCategory(selectedList[0].id)
   }
 
   const onRemove = (selectedList, removedItem) => {
@@ -51,10 +52,12 @@ export default function SelectBoxComponent(props) {
   }
 
   const onSubjectSelect = (selectedList, selectedItem) => {
+    setTagBySelectedSubject(selectedList[0].id);
     setSelectedSubjects(selectedList);
   }
 
   const onSubjectRemove = (selectedList, removedItem) => {
+    setTagBySelectedSubject(selectedList[0].id);
     setSelectedSubjects(selectedList);
   }
 
@@ -66,11 +69,19 @@ export default function SelectBoxComponent(props) {
     setSelectedTags(selectedList);
   }
 
-  const onSubjectClick = (selectedSubjectId) => {
+  const setSubjectBySelectedCategory = (selectedCategoryId) => {
     const subjectsArray = allSubjectsArray.filter((item) => {
-      return item.category_id === selectedSubjectId && item;
+      return item.category_id === selectedCategoryId && item;
     })
     setSubjectsArray(subjectsArray);
+  }
+
+  const setTagBySelectedSubject = (selectedSubjectId) => {
+    console.log(selectedSubjectId);
+    const tagsArray = allTagsArray.filter((item) => {
+      return item.subject_id === selectedSubjectId && item;
+    })
+    setTagsArray(tagsArray);
   }
 
   const onTagClick = (selectedTagId) => {
@@ -105,7 +116,7 @@ export default function SelectBoxComponent(props) {
             selectedCategories && selectedCategories.map((item) => {
               return <div key={item.id} className="d-md-flex mt-3">
                 <button type="button"
-                  onClick={() => onSubjectClick(item.id)}
+                  onClick={() => {}}
                   className="btn btn-success m-2"  
                 >{item.category}</button>
               </div>
