@@ -3,71 +3,105 @@ import { Multiselect } from "multiselect-react-dropdown";
 
 export default function SelectBoxComponent(props) {
   
-  const allTagsArray = [
-    {tag: 'Option 1 Tag 1', id: 'subject_1_tag_1', subject_id: 'option_1'},
-    {tag: 'Option 1 Tag 2', id: 'subject_1_tag_2', subject_id: 'option_1'},
-    {tag: 'Option 1 Tag 3', id: 'subject_1_tag_3', subject_id: 'option_1'},
-    {tag: 'Option 1 Tag 4', id: 'subject_1_tag_4', subject_id: 'option_1'},
-    {tag: 'Option 1 Tag 5', id: 'subject_1_tag_5', subject_id: 'option_1'},
-    {tag: 'Option 1 Tag 6', id: 'subject_1_tag_6', subject_id: 'option_1'},
-
-    {tag: 'Option 2 Tag 1', id: 'subject_2_tag_1', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 2', id: 'subject_2_tag_2', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 3', id: 'subject_2_tag_3', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 4', id: 'subject_2_tag_4', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 5', id: 'subject_2_tag_5', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 6', id: 'subject_2_tag_6', subject_id: 'option_2'},
-    {tag: 'Option 2 Tag 7', id: 'subject_2_tag_7', subject_id: 'option_2'},
-
-    {tag: 'Option 3 Tag 1', id: 'subject_3_tag_1', subject_id: 'option_3'},
-    {tag: 'Option 3 Tag 2', id: 'subject_3_tag_2', subject_id: 'option_3'},
-    {tag: 'Option 3 Tag 3', id: 'subject_3_tag_3', subject_id: 'option_3'},
-    
-    {tag: 'Option 4 Tag 1', id: 'subject_4_tag_1', subject_id: 'option_4'},
-    {tag: 'Option 4 Tag 2', id: 'subject_4_tag_2', subject_id: 'option_4'},
-    {tag: 'Option 4 Tag 3', id: 'subject_4_tag_3', subject_id: 'option_4'},
-    {tag: 'Option 4 Tag 4', id: 'subject_4_tag_4', subject_id: 'option_4'},
-    {tag: 'Option 4 Tag 5', id: 'subject_4_tag_5', subject_id: 'option_4'},
-    {tag: 'Option 4 Tag 6', id: 'subject_4_tag_6', subject_id: 'option_4'},
-    
-    {tag: 'Option 5 Tag 1', id: 'subject_5_tag_1', subject_id: 'option_5'},
-    {tag: 'Option 5 Tag 2', id: 'subject_5_tag_2', subject_id: 'option_5'},
-    {tag: 'Option 5 Tag 3', id: 'subject_5_tag_3', subject_id: 'option_5'},
-    {tag: 'Option 5 Tag 4', id: 'subject_5_tag_4', subject_id: 'option_5'},
-    {tag: 'Option 5 Tag 5', id: 'subject_5_tag_5', subject_id: 'option_5'},
-
-    {tag: 'Option 6 Tag 1', id: 'subject_6_tag_1', subject_id: 'option_6'},
-    {tag: 'Option 6 Tag 2', id: 'subject_6_tag_2', subject_id: 'option_6'},
-    {tag: 'Option 6 Tag 3', id: 'subject_6_tag_3', subject_id: 'option_6'},
-    
-    {tag: 'Option 7 Tag 1', id: 'subject_7_tag_1', subject_id: 'option_7'},
-    {tag: 'Option 7 Tag 2', id: 'subject_7_tag_2', subject_id: 'option_7'},
-    {tag: 'Option 7 Tag 3', id: 'subject_7_tag_3', subject_id: 'option_7'},
-    {tag: 'Option 7 Tag 4', id: 'subject_7_tag_4', subject_id: 'option_7'},
+  const allSubjectsArray = [
+    {subject: 'Category 1 Subject 1', id: 'category_1_subject_1', category_id: 'category_1'},
+    {subject: 'Category 1 Subject 2', id: 'category_1_subject_2', category_id: 'category_1'},
+    {subject: 'Category 1 Subject 3', id: 'category_1_subject_3', category_id: 'category_1'},
+    {subject: 'Category 1 Subject 4', id: 'category_1_subject_4', category_id: 'category_1'},
+    {subject: 'Category 1 Subject 5', id: 'category_1_subject_5', category_id: 'category_1'},
+    {subject: 'Category 1 Subject 6', id: 'category_1_subject_6', category_id: 'category_1'},
+    {subject: 'Category 2 Subject 1', id: 'category_2_subject_1', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 2', id: 'category_2_subject_2', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 3', id: 'category_2_subject_3', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 4', id: 'category_2_subject_4', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 5', id: 'category_2_subject_5', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 6', id: 'category_2_subject_6', category_id: 'category_2'},
+    {subject: 'Category 2 Subject 7', id: 'category_2_subject_7', category_id: 'category_2'},
+    {subject: 'Category 3 Subject 1', id: 'category_3_subject_1', category_id: 'category_3'},
+    {subject: 'Category 3 Subject 2', id: 'category_3_subject_2', category_id: 'category_3'},
+    {subject: 'Category 3 Subject 3', id: 'category_3_subject_3', category_id: 'category_3'},
+    {subject: 'Category 4 Subject 1', id: 'category_4_subject_1', category_id: 'category_4'},
+    {subject: 'Category 4 Subject 2', id: 'category_4_subject_2', category_id: 'category_4'},
+    {subject: 'Category 4 Subject 3', id: 'category_4_subject_3', category_id: 'category_4'},
+    {subject: 'Category 4 Subject 4', id: 'category_4_subject_4', category_id: 'category_4'},
+    {subject: 'Category 4 Subject 5', id: 'category_4_subject_5', category_id: 'category_4'},
+    {subject: 'Category 4 Subject 6', id: 'category_4_subject_6', category_id: 'category_4'},
+    {subject: 'Category 5 Subject 1', id: 'category_5_subject_1', category_id: 'category_5'},
+    {subject: 'Category 5 Subject 2', id: 'category_5_subject_2', category_id: 'category_5'},
+    {subject: 'Category 5 Subject 3', id: 'category_5_subject_3', category_id: 'category_5'},
+    {subject: 'Category 5 Subject 4', id: 'category_5_subject_4', category_id: 'category_5'},
+    {subject: 'Category 5 Subject 5', id: 'category_5_subject_5', category_id: 'category_5'},
+    {subject: 'Category 6 Subject 1', id: 'category_6_subject_1', category_id: 'category_6'},
+    {subject: 'Category 6 Subject 2', id: 'category_6_subject_2', category_id: 'category_6'},
+    {subject: 'Category 6 Subject 3', id: 'category_6_subject_3', category_id: 'category_6'},
+    {subject: 'Category 7 Subject 1', id: 'category_7_subject_1', category_id: 'category_7'},
+    {subject: 'Category 7 Subject 2', id: 'category_7_subject_2', category_id: 'category_7'},
+    {subject: 'Category 7 Subject 3', id: 'category_7_subject_3', category_id: 'category_7'},
+    {subject: 'Category 7 Subject 4', id: 'category_7_subject_4', category_id: 'category_7'},
   ];
-	const [subjectArray, setSubjectArray] = useState([]);
-	const [selectedSubjects, setSelectedSubjects] = useState([]);
+
+  const allTagsArray = [
+    {tag: 'Subject 1 Tag 1', id: 'tag_1', subject_id: 'category_1_subject_1'},
+    {tag: 'Subject 1 Tag 2', id: 'tag_2', subject_id: 'category_1_subject_1'},
+    {tag: 'Subject 1 Tag 3', id: 'tag_3', subject_id: 'category_1_subject_1'},
+    {tag: 'Subject 1 Tag 4', id: 'tag_4', subject_id: 'category_1_subject_1'},
+    {tag: 'Subject 1 Tag 5', id: 'tag_5', subject_id: 'category_1_subject_1'},
+
+    {tag: 'Subject 2 Tag 1', id: 'tag_1', subject_id: 'category_1_subject_2'},
+    {tag: 'Subject 2 Tag 2', id: 'tag_2', subject_id: 'category_1_subject_2'},
+    {tag: 'Subject 2 Tag 3', id: 'tag_3', subject_id: 'category_1_subject_2'},
+    {tag: 'Subject 2 Tag 4', id: 'tag_4', subject_id: 'category_1_subject_2'},
+    {tag: 'Subject 2 Tag 5', id: 'tag_5', subject_id: 'category_1_subject_2'},
+    {tag: 'Subject 2 Tag 6', id: 'tag_6', subject_id: 'category_1_subject_2'},
+
+    
+    {tag: 'Subject 3 Tag 1', id: 'tag_1', subject_id: 'category_1_subject_3'},
+    {tag: 'Subject 3 Tag 2', id: 'tag_2', subject_id: 'category_1_subject_3'},
+    {tag: 'Subject 3 Tag 3', id: 'tag_3', subject_id: 'category_1_subject_3'},
+    {tag: 'Subject 3 Tag 4', id: 'tag_4', subject_id: 'category_1_subject_3'},
+    {tag: 'Subject 3 Tag 5', id: 'tag_5', subject_id: 'category_1_subject_3'},
+
+    
+    {tag: 'Subject 4 Tag 1', id: 'tag_1', subject_id: 'category_1_subject_4'},
+    {tag: 'Subject 4 Tag 2', id: 'tag_2', subject_id: 'category_1_subject_4'},
+    {tag: 'Subject 4 Tag 3', id: 'tag_3', subject_id: 'category_1_subject_4'},
+    {tag: 'Subject 4 Tag 4', id: 'tag_4', subject_id: 'category_1_subject_4'},
+    {tag: 'Subject 4 Tag 5', id: 'tag_5', subject_id: 'category_1_subject_4'},
+    
+  ];
+	const [categoryArray, setCategoryArray] = useState([]);
+	const [selectedCategories, setSelectedCategories] = useState([]);
+  const [subjectsArray, setSubjectsArray] = useState([]);
+  const [selectedSubjects, setSelectedSubjects] = useState([]);
   const [tagsArray, setTagsArray] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
 
 	useEffect(() => {
-		setSubjectArray(
+		setCategoryArray(
 			[
-				{subject: 'Option 1', id: 'option_1'}, 
-				{subject: 'Option 2', id: 'option_2'}, 
-				{subject: 'Option 3', id: 'option_3'}, 
-				{subject: 'Option 4', id: 'option_4'}, 
-				{subject: 'Option 5', id: 'option_5'}, 
-				{subject: 'Option 6', id: 'option_6'}, 
-				{subject: 'Option 7', id: 'option_7'}]
+				{category: 'Category 1', id: 'category_1'}, 
+				{category: 'Category 2', id: 'category_2'}, 
+				{category: 'Category 3', id: 'category_3'}, 
+				{category: 'Category 4', id: 'category_4'}, 
+				{category: 'Category 5', id: 'category_5'}, 
+				{category: 'Category 6', id: 'category_6'}, 
+				{category: 'Category 7', id: 'category_7'}]
 		);
-	}, [subjectArray, tagsArray])
+	}, [categoryArray, subjectsArray, selectedTags])
 
   const onSelect = (selectedList, selectedItem) => {
-    setSelectedSubjects(selectedList);
+    setSelectedCategories(selectedList);
   }
 
   const onRemove = (selectedList, removedItem) => {
+    setSelectedCategories(selectedList);
+  }
+
+  const onSubjectSelect = (selectedList, selectedItem) => {
+    setSelectedSubjects(selectedList);
+  }
+
+  const onSubjectRemove = (selectedList, removedItem) => {
     setSelectedSubjects(selectedList);
   }
 
@@ -80,10 +114,18 @@ export default function SelectBoxComponent(props) {
   }
 
   const onSubjectClick = (selectedSubjectId) => {
-    const tagsArray = allTagsArray.filter((item) => {
-      return item.subject_id === selectedSubjectId && item
+    const subjectsArray = allSubjectsArray.filter((item) => {
+      return item.category_id === selectedSubjectId && item;
     })
-    setTagsArray(tagsArray)
+    setSubjectsArray(subjectsArray);
+  }
+
+  const onTagClick = (selectedTagId) => {
+    const tagArray = allTagsArray.filter((item) => {
+      return item.subject_id === selectedTagId && item;
+    })
+    
+    setTagsArray(tagArray)
   }
 
 	return (
@@ -93,31 +135,61 @@ export default function SelectBoxComponent(props) {
         <br />
         <div className="examples col-12 col-md-5 mt30">
           <Multiselect 
-            id="subject_select"
-            options={subjectArray}
+            id="category_select"
+            options={categoryArray}
             selectionLimit={5}
             onSelect={(selectedList, selectedIte) => onSelect(selectedList, selectedIte)}
             onRemove={(selectedList, removedItem) => onRemove(selectedList, removedItem)}
+            displayValue="category"
+            placeholder="Categories"
+          />
+        </div>
+      </div>
+
+			<div className="col-12 d-md-flex mt-3 mr-2 ml-2">
+				<div id="seleted_categories" className="row contents">
+					{
+            selectedCategories && selectedCategories.map((item) => {
+              return <div key={item.id} className="d-md-flex mt-3">
+                <button type="button"
+                  onClick={() => onSubjectClick(item.id)}
+                  className="btn btn-success m-1"  
+                >{item.category}</button>
+              </div>
+            })
+					}
+				</div>
+			</div>
+
+      <div className="col-12 d-md-flex mt-3">
+        <br />
+        <div className="examples col-12 col-md-5 mt30">
+          <Multiselect 
+            id="subject_select"
+            options={subjectsArray}
+            selectionLimit={5}
+            onSelect={(selectedList, selectedIte) => onSubjectSelect(selectedList, selectedIte)}
+            onRemove={(selectedList, removedItem) => onSubjectRemove(selectedList, removedItem)}
             displayValue="subject"
             placeholder="Subjects"
           />
         </div>
       </div>
 
-			<div className="col-12 d-md-flex mt-3 mr-2 ml-2">
-				<div id="seleted_subjects" className="row contents">
-					{
+      <div className="col-12 d-md-flex mt-3 mr-2 ml-2">
+        <div id="seleted_subjects" className="row contents">
+          {
             selectedSubjects && selectedSubjects.map((item) => {
               return <div key={item.id} className="d-md-flex mt-3">
                 <button type="button"
-                  onClick={() => onSubjectClick(item.id)}
-                  className="btn btn-primary m-1"  
+                  onClick={() => onTagClick(item.id)}
+                  className="btn btn-secondary m-1"  
                 >{item.subject}</button>
               </div>
             })
-					}
-				</div>
-			</div>
+          }
+        </div>
+      </div>
 
       <div className="col-12 d-md-flex mt-3">
         <br />
@@ -134,19 +206,20 @@ export default function SelectBoxComponent(props) {
         </div>
       </div>
 
-			<div className="col-12 d-md-flex mt-3 mr-2 ml-2">
-				<div id="seleted_tags" className="row contents">
-					{
+      <div className="col-12 d-md-flex mt-3 mr-2 ml-2">
+        <div id="seleted_subjects" className="row contents">
+          {
             selectedTags && selectedTags.map((item) => {
               return <div key={item.id} className="d-md-flex mt-3">
-                <div
-                  className="m-2 h7"  
-                >{item.tag}</div>
+                <button type="button"
+                  onClick={() => onTagClick(item.id)}
+                  className="btn btn-primary m-1"  
+                >{item.tag}</button>
               </div>
             })
-					}
-				</div>
-			</div>
+          }
+        </div>
+      </div>
 		</div>
 	);
 }
