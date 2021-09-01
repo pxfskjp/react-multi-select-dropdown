@@ -1,37 +1,58 @@
 const express = require('express');
-const mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
 const cors = require('cors');
-const data = require('./data');
 const config = require('./config');
-
-const Category = require('../backend/model/categoryModel');
-const Subject = require('../backend/model/subjectModel');
-const Tag = require('../backend/model/tagModel');
-
 const PORT = process.env.PORT || 3001;
 const app = express();
-
 const mongodbUrl = config.MONGODB_URL;
-// const MongoClient = mongo.MongoClient;
-// const client = new MongoClient(mongodbUrl, { 
-//     useNewUrlParser: true
-//  });
+
+// MongoDB connection
 
 app.use(cors());
-// API endpoints
 
-app.get('/api/v1/categories', (req, res) => {
-    console.log("comming!");
-    console.log(Category.find());
-    return res.send(data.categories);
-});
+MongoClient.connect(mongodbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, async (err, client) => {
+    if (err) {
+        return console.log(err);
+    }
 
-app.get('/api/v1/subjects', (req, res) => {
-    return res.send(data.subjects);
-});
+    // Specify database you want to access
+    const db = client.db('dropdownList');
+    const categoryCourses = db.collection('categories');
+    const subjectCourses = db.collection('subjects');
+    const tagCourses = db.collection('tags');
+    
+    var categories = [];
+    await categoryCourses.find().toArray((err, results) => {
+        categories = results;
+    });
 
-app.get('/api/v1/tags', (req, res) => {
-    return res.send(data.tags);
+    var subjects = [];
+    await subjectCourses.find().toArray((err, results) => {
+        subjects = results;
+    });
+
+    var tags = [];
+    await tagCourses.find().toArray((err, results) => {
+        tags = results;
+    });
+
+    // API endpoints
+    
+    app.get('/api/v1/categories', (req, res) => {
+        return res.send(categories);
+    });
+    
+    app.get('/api/v1/subjects', (req, res) => {
+        return res.send(subjects);
+    });
+    
+    app.get('/api/v1/tags', (req, res) => {
+        return res.send(tags);
+    });
+    console.log(`MongoDB Connected: ${mongodbUrl}`);
 });
 
 
