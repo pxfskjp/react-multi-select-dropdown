@@ -82,7 +82,7 @@ export default function SelectBoxComponent(props) {
               return <div key={item.id} className="d-md-flex mt-3">
                 <button type="button"
                   onClick={() => onSubjectClick(item.id)}
-                  className="btn btn-success m-1"  
+                  className="btn btn-success m-2"  
                 >{item.category}</button>
               </div>
             })
@@ -112,7 +112,7 @@ export default function SelectBoxComponent(props) {
               return <div key={item.id} className="d-md-flex mt-3">
                 <button type="button"
                   onClick={() => onTagClick(item.id)}
-                  className="btn btn-secondary m-1"  
+                  className="btn btn-secondary m-2"  
                 >{item.subject}</button>
               </div>
             })
@@ -142,7 +142,7 @@ export default function SelectBoxComponent(props) {
               return <div key={item.id} className="d-md-flex mt-3">
                 <button type="button"
                   onClick={() => onTagClick(item.id)}
-                  className="btn btn-primary m-1"  
+                  className="btn btn-primary m-2"  
                 >{item.tag}</button>
               </div>
             })
