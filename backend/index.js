@@ -18,7 +18,6 @@ MongoClient.connect(mongodbUrl, {
         return console.log(err);
     }
 
-    // Specify database you want to access
     const db = client.db('dropdownList');
     const categoryCourses = db.collection('categories');
     const subjectCourses = db.collection('subjects');
