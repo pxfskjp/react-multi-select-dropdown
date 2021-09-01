@@ -4,6 +4,10 @@ const cors = require('cors');
 const data = require('./data');
 const config = require('./config');
 
+const Category = require('../backend/model/categoryModel');
+const Subject = require('../backend/model/subjectModel');
+const Tag = require('../backend/model/tagModel');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -22,9 +26,9 @@ client.connect((err) => {
         console.log(`Error occured during connect DB ${err}`);
         return;
     }
-
-
 })
+
+console.log();
 
 // API endpoints
 
