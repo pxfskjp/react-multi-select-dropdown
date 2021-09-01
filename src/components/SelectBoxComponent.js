@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Multiselect } from "multiselect-react-dropdown";
-import data from '../data';
+import axios from 'axios';
+
+const url = 'http://localhost:3001/'
 
 export default function SelectBoxComponent(props) {
   
-  const allSubjectsArray = data.subjects;
-  const allTagsArray = data.tags;
+  const [allSubjectsArray, setAllSubjectsArray] = useState([]);
+  const [allTagsArray, setAllTagsArray] = useState([]);
 
 	const [categoryArray, setCategoryArray] = useState([]);
 	const [selectedCategories, setSelectedCategories] = useState([]);
@@ -15,7 +17,25 @@ export default function SelectBoxComponent(props) {
   const [selectedTags, setSelectedTags] = useState([]);
 
 	useEffect(() => {
-		setCategoryArray(data.categories);
+
+    // Get Categories
+    axios.get(`${url}api/v1/categories`)
+      .then((res) => {
+        setCategoryArray(res.data);
+      })
+    
+    // Get Subjects
+    axios.get(`${url}api/v1/subjects`)
+    .then((res) => {
+      setAllSubjectsArray(res.data);
+    })
+
+    // Get Tags
+    axios.get(`${url}api/v1/tags`)
+      .then((res) => {
+        setAllTagsArray(res.data);
+      })
+
 	}, [categoryArray, subjectsArray, selectedTags])
 
   const onSelect = (selectedList, selectedItem) => {
